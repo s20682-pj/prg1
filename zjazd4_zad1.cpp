@@ -25,7 +25,7 @@ int main()
 		{
 			for(int j=0;j<b;j++)
 				cout<<W[i][j]<<" ";
-			cout<<endl; 
+			cout<<endl; }
 	
 	return 0;
 }
