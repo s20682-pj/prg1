@@ -40,39 +40,91 @@ int main()
 		i = 0;
 	}
 
+	int wygrana=0;
 	cout << "Witamy w programie Milionerzy! Jestem Hubert Urbański, wasz prowadzący. Witamy naszego nowego zawodnika. Jak masz na imię?" << endl;
 	string imie;
 	cin >> imie;
-	cout << imie << ", wspaniale, witamy w programie! Zasady są proste, musisz odpowiedzieć poprawnie na 12 pytań, by wygrac milion złotych. Są dwa progi gwarantowane: 1000 oraz 40000 złotych. Zatem zacznijmy grę!" << endl;
+	cout << imie << ", wspaniale, witamy w programie! Zasady są proste, musisz odpowiedzieć poprawnie na 12 pytań, by wygrac milion złotych. Są dwa progi gwarantowane: 1000 oraz 40000 złotych. Możesz użyć także 3 kół ratunkowych, wpisz 1, by wybrać Telefon do przyjaciela, 2 by zadać pytanie publiczności lub 3, by wykluczyć 2 błędne odpowiedzi. Możesz także wpisać rezygnuję, by odejść z tym co masz. Zatem zacznijmy grę!" << endl;
 	int x;
 	x = rand() % 5;
 	cout << "Pytanie za 500 złotych: " << endl << pyt500[x] << endl;
 	string odp500;
 	cin >> odp500;
-	if (odp500 == "A" || odp500 == "a")
+	
+	switch( odp500 )
+    {
+    case 1:
+        cout << "Został wyvbrany telefon do pzyjaciela. Witamy twojego przyjaciela Janusza! Januszu, jak myślisz, która odpowoedź jest prawidłowa?"<<endl;
+		cout<< "Według mnie jest to odpowiedź A."<<endl;
+		cout << "Dziękujemy ci bardzo. Mam nadzieję, że twój przyjaciel Ci dobrze podpowiedział."
+        break;
+    case 2:
+        cout << "Wybrano pytanie do publiczności, zatem proszę naszą widownię o wskazanie poprawnej odpowiedzi!"<<endl;
+		cout<< "74% dla odpowiedzi A, 2% dla odpowiedzi B, 10% dla odpowiedzi C i 14% dla odpowiedzi D."<<endl;
+        break;
+    case 3:
+        cout<< "Wybrano pół na pół. Zatem odpada odpowiedź C i D." << endl;
+        break;
+	case 3:
+        cout<< "Wybrano pół na pół. Zatem odpada odpowiedź C i D." << endl;
+        break;
+	case "A":
+        cout << "Gratulacje, to poprawna odpowiedź!"<<endl;
+		wygrana=500;
+        break;		
+	case "a":
+        cout << "Gratulacje, to poprawna odpowiedź!"<<endl;
+		wygrana=500;
+        break;
+	default:
+        cout << "Przykro mi, ale poprawna odpowiedź to A." << endl;
+		cout << "Niestety, ale dziś odchodzisz z niczym. Mam nadzieję, że jeszcze keidyś spróbujesz swoich sił." << endl;
+        break;
+	}
+
+	if (wygrana==500)
 	{
-		cout << "Gratulacje, to poprawna odpowiedź!"<<endl;
 		x = 0;
 		cout << "Świetny początek, " << imie << "! Przejdźmy dalej! Pytanie za gwarantowany 1000 złotych: " << endl;
 		x = rand() % 5;
 		cout << pyt1k[i] << endl;
 		string odp1k;
 		cin >> odp1k;
-		if (odp1k == "D" || odp1k == "d") {
-			cout << "Tak! To poprawna odpowiedź!" << endl;
-		}
-		else {
-			cout << "Przykro mi, ale poprawna odpowiedź to D." << endl;
-			cout << "Niestety, ale dziś odchodzisz z niczym. Mam nadzieję, że jeszcze keidyś spróbujesz swoich sił." << endl;
-		}
-
-
-	}
-	else {
-		cout << "Przykro mi, ale poprawna odpowiedź to A." << endl;
-		cout << "Niestety, ale dziś odchodzisz z niczym. Mam nadzieję, że jeszcze keidyś spróbujesz swoich sił." << endl;
-	}
-
+		
+		switch( odp1k )
+			{
+			case 1:
+				cout << "Został wyvbrany telefon do pzyjaciela. Witamy twojego przyjaciela Janusza! Januszu, jak myślisz, która odpowoedź jest prawidłowa?"<<endl;
+				cout<< "Według mnie jest to odpowiedź D."<<endl;
+				cout << "Dziękujemy ci bardzo. Mam nadzieję, że twój przyjaciel Ci dobrze podpowiedział."
+				break;
+			case 2:
+				cout << "Wybrano pytanie do publiczności, zatem proszę naszą widownię o wskazanie poprawnej odpowiedzi!"<<endl;
+				cout<< "14% dla odpowiedzi A, 12% dla odpowiedzi B, 10% dla odpowiedzi C i 64% dla odpowiedzi D."<<endl;
+				break;
+			case 3:
+				cout<< "Wybrano pół na pół. Zatem odpada odpowiedź A i C." << endl;
+				break;
+			case 3:
+				cout<< "Wybrano pół na pół. Zatem odpada odpowiedź A i C." << endl;
+				break;
+			case "D":
+				cout << "Tak! To poprawna odpowiedź! Masz gwarantowany 1000 złotych!" << endl;
+				wygrana=1000;
+				break;		
+			case "d":
+				cout << "Tak! To poprawna odpowiedź! Masz gwarantowany 1000 złotych!" << endl;
+				wygrana=1000;
+				break;
+			case "rezygnuję":
+				cout << "Przykro mi to slyszeć, ale wygrywasz "<<wygrana<<"złotych, gratulację! Mam nadzieję, że jeszcze kiedyś się spotkamy." << endl;
+				break;	
+			default:
+				cout << "Przykro mi, ale poprawna odpowiedź to D." << endl;
+				cout << "Niestety, ale dziś odchodzisz z niczym. Mam nadzieję, że jeszcze keidyś spróbujesz swoich sił." << endl;
+				break;
+			}
+		
 
 	return 0;
 }
